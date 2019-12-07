@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="userName" /><button @click="addToList">
+        Ekle
+      </button>
+      <ul>
+        <li v-for="user in userList">
+          <span>{{ user.id }} - {{ user.name }}</span>
+        </li>
+      </ul>
+      <hr />
+      {{ userList }}
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          userName: "",
+          userList: [
+            { name: "Gokhan", id: 1 },
+            { name: "cemil", id: 2 }
+          ]
+        },
+        methods: {
+          addToList() {
+            this.userList.push({
+              name: this.userName,
+              id: new Date().getTime()
+            });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

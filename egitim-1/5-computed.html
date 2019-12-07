@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=,, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h3>Counter 1</h3>
+
+      <button @click="counter++">+</button>
+      <button @click="counter--">-</button>
+      <p>{{ counter }}</p>
+      <p>{{ counterCheck }}</p>
+
+      <hr />
+      <h3>Counter 2</h3>
+      <button @click="counter2++">+</button>
+      <button @click="counter2--">-</button>
+      <p>{{ counter2 }}</p>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          counter: 10,
+          counter2: 10
+        },
+        methods: {},
+        computed: {
+          counterCheck() {
+            console.log("counterCheck Çalıştı..");
+            return this.counter >= 10 ? "Büyüktür" : "Küçüktür";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

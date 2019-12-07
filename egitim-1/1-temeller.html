@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="continer">
+        <!-- atttribute binding..
+        v-bind == :
+        v-model
+        -->
+        <input v-bind:value="inputValue" />
+        <input v-model="inputValue" />
+        <button @click="changeIt">Tıkla</button>
+        <a :href="url">GoTo Link</a>
+        <p>URL {{ url }}</p>
+      </div>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          url: "https://www.google.com",
+          inputValue: 34,
+          title: "Test 3",
+          description: "lorem ipsum",
+          person: {
+            name: "Defne",
+            lastname: "Kandemir",
+            age: 2,
+            hasTeeth: true,
+            hobbies: ["game", "reading", "cats", "animals"]
+          }
+        },
+        methods: {
+          changeIt() {
+            this.url = "https://www.gkandemir.com";
+            this.person.name = "Handan";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

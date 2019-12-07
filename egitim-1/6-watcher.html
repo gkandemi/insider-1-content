@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=,, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{ counter}}
+      <button @click="counter++">+</button>
+      <button @click="counter--">-</button>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          counter: 0
+        },
+        methods: {},
+        computed: {},
+        watch: {
+          counter(value, oldValue) {
+            console.log("Counter Değişti", value, oldValue);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="showIt">Göster</button>
+      <button @click="hideIt">Gizle</button>
+      <button @click="toggle">Göster/Gizle</button>
+      <button @click="show=!show">Göster/Gizl Metodsuz</button>
+      <p v-show="show == true">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ipsam vero
+        eligendi unde nostrum totam optio nobis, commodi voluptatibus,
+        distinctio eius ab temporibus facilis perferendis, explicabo alias
+        repudiandae ea quasi.
+      </p>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          show: false
+        },
+        methods: {
+          showIt() {
+            this.show = true;
+          },
+          hideIt() {
+            this.show = false;
+          },
+          toggle() {
+            this.show = !this.show;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

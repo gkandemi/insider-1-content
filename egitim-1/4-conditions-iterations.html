@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      .bg-orange {
+        background-color: orange;
+        color: #fff;
+      }
+      .bg-red {
+        background-color: red;
+        color: #fff;
+      }
+      .bg-green {
+        background-color: green;
+        color: #fff;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        width: 200px;
+      }
+      ul li {
+        border: 1px solid #ccc;
+        margin-bottom: 5px;
+        padding: 5px;
+      }
+
+      .item button {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h3>Manav</h3>
+      <ul>
+        <li
+          v-for="item in itemList"
+          class="item"
+          :class="{
+          'bg-red': item.count == 0,
+          'bg-orange': item.count <= 5 && item.count != 0,
+          'bg-green': item.count > 5
+        }"
+        >
+          <span>{{ item.name }} - {{ item.count }}</span>
+          <button :disabled="item.count == 0" @click="buyItem(item)">
+            Satın Al
+          </button>
+        </li>
+      </ul>
+      {{ calculateStocks }}
+      <button @click="counter++">Art</button>
+      {{ counter }}
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          counter: 0,
+          itemList: [
+            { name: "Elma", count: 10 },
+            { name: "Armut", count: 10 },
+            { name: "Çilek", count: 10 },
+            { name: "Nar", count: 10 }
+          ],
+          stocks: {}
+        },
+        methods: {
+          buyItem(item) {
+            item.count--;
+          }
+        },
+        computed: {
+          calculateStocks() {
+            console.log("Calculator Calisti...");
+            return {
+              zero: this.itemList.filter(i => i.count == 0).length,
+              critical: this.itemList.filter(i => i.count <= 5 && i.count !== 0)
+                .length,
+              available: this.itemList.filter(i => i.count > 5).length
+            };
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
